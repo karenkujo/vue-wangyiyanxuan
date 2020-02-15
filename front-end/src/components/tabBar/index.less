@@ -1,0 +1,79 @@
+.tabBar {
+  display: flex;
+  height: 100px;
+  width: 100vw;
+  background-color: rgb(250, 247, 247);
+  a {
+    display: inline-block;
+    text-decoration: none;
+    flex: 1;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    .icon {
+      display: block;
+      margin: 0 auto;
+      margin-top: 8px;
+      width: 50px;
+      height: 50px;
+    }
+    span {
+      display: inline-block;
+      font-size: 28px;
+      color: rgb(88, 88, 88);
+      letter-spacing: 2px;
+      vertical-align: top;
+    }
+  }
+  .index .icon {
+    background: url('../../../static/images/ic_menu_choice_nor.png');
+    background-size: 100% 100%;
+  }
+  .category .icon {
+    background: url('../../../static/images/ic_menu_sort_nor.png');
+    background-size: 100% 100%;
+  }
+  .cart .icon {
+    background: url('../../../static/images/ic_menu_shoping_nor.png');
+    background-size: 100% 100%;
+  }
+  .my .icon {
+    background: url('../../../static/images/ic_menu_me_nor.png');
+    background-size: 100% 100%;
+  }
+  .router-link-active.index {
+    .icon {
+      background: url('../../../static/images/ic_menu_choice_pressed.png');
+      background-size: 100% 100%;
+    }
+    span {
+      color: rgb(180, 41, 46);
+    }
+  }
+  .router-link-active.category {
+    .icon {
+      background: url('../../../static/images/ic_menu_sort_pressed.png');
+      background-size: 100% 100%;
+    }
+    span {
+      color: rgb(180, 41, 46);
+    }
+  }
+  .router-link-active.cart {
+    .icon {
+      background: url('../../../static/images/ic_menu_shoping_pressed.png');
+      background-size: 100% 100%;
+    }
+    span {
+      color: rgb(180, 41, 46);
+    }
+  }
+  .router-link-active.my {
+    .icon {
+      background: url('../../../static/images/ic_menu_me_pressed.png');
+      background-size: 100% 100%;
+    }
+    span {
+      color: rgb(180, 41, 46);
+    }
+  }
+}
