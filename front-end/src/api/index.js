@@ -7,13 +7,13 @@ axios.defaults.baseURL = 'http://localhost:3000'  // 基础API地址
 
 // 判断返回状态,响应拦截
 axios.interceptors.response.use((res) => {
-  if (res.code !== 200) {
-    alert('网络异常')
+  if (res.status !== 200) {
+    console.log('网络异常')
     return Promise.reject(res)
   }
   return res
 }, (error) => {
-  alert('网络异常')
+  console.log('网络异常')
   return Promise.reject(error)
 })
 
