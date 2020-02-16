@@ -4,7 +4,8 @@
   right: 0;
   bottom: 100px;
   left: 0;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: #f8f6f6;
   .search {
     width: 100%;
@@ -56,6 +57,268 @@
       div {
         font-size: 28px;
         color: rgb(43, 42, 42);
+      }
+    }
+  }
+  .brand {
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    .title {
+      width: 100%;
+      height: 120px;
+      text-align: center;
+      line-height: 120px;
+      font-size: 30px;
+    }
+    .brandList {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 11px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .brandItem {
+        width: 360px;
+        height: 235px;
+        position: relative;
+        margin-bottom: 8px;
+        .desc {
+          position: absolute;
+          top: 4px;
+          left: 6px;
+          .name {
+            font-size: 30px;
+            color: rgb(103, 114, 116);
+          }
+          .price {
+            font-size: 28px;
+            color: rgb(151, 151, 151);
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .newGoods {
+    width: 100%;
+    background-color: #fff;
+    margin-top: 20px;
+    overflow: hidden;
+    .head {
+      margin-top: 2px;
+      width: 100%;
+      height: 260px;
+      text-align: center;
+      background: url('../../../static/images/bgnew.png') no-repeat;
+      background-size: 100%;
+      overflow: hidden;
+      div:nth-child(1) {
+        margin-top: 60px;
+        font-size: 36px;
+        color: rgb(136, 150, 150);
+      }
+      div:nth-child(2) {
+        font-size: 28px;
+        color: rgb(136, 150, 150);
+        width: 160px;
+        height: 60px;
+        background: #d0ddeb;
+        line-height: 65px;
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+    }
+    .goodsList {
+      width: 100%;
+      overflow-x: scroll;
+      .content {
+        white-space: nowrap;
+        .goods-item {
+          width: 280px;
+          height: 416px;
+          display: inline-block;
+          img {
+            width: 280px;
+            height: 280px;
+          }
+          div {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 4px;
+          }
+          .name {
+            font-size: 28px;
+            font-weight: 600;
+          }
+          .desc {
+            font-size: 24px;
+          }
+          .price {
+            font-size: 28px;
+            margin-bottom: 0;
+            color: rgb(177, 95, 95);
+          }
+        }
+      }
+    }
+  }
+  .hotGoods {
+    .head {
+      background: url('../../../static/images/bgtopic.png') no-repeat;
+      background-size: 100%;
+      div:nth-child(1) {
+        color: #b1a279;
+        span {
+          display: inline-block;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background-color: #b1a279;
+          margin-bottom: 10px;
+        }
+      }
+      div:nth-child(2) {
+        background: #f4e9cb;
+      }
+    }
+  }
+  .special {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    .head {
+      width: 100%;
+      text-align: center;
+      span:nth-child(1) {
+        font-size: 30px;
+        letter-spacing: 1px;
+        height: 100px;
+        line-height: 100px;
+      }
+      span:nth-child(2) {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        background: url('../../../static/images/right.png') no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-top: 3px;
+      }
+    }
+    .specialList {
+      width: 100%;
+      overflow-y: scroll;
+      .content {
+        white-space: nowrap;
+        .special-item:nth-child(1) {
+          margin-left: 16px;
+        }
+        .special-item {
+          display: inline-block;
+          width: 575px;
+          margin-right: 16px;
+          img {
+            width: 100%;
+            height: 325px;
+            border-radius: 15px;
+          }
+          .desc {
+            position: relative;
+            margin-top: 10px;
+            div:nth-child(1) {
+              font-size: 30px;
+              font-weight: 600;
+              margin-bottom: 6px;
+            }
+            div:nth-child(2) {
+              font-size: 24px;
+              overflow: hidden;
+              color: rgb(126, 126, 126);
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+            div:nth-child(3) {
+              position: absolute;
+              right: 10px;
+              top: 0;
+              font-size: 26px;
+              color: rgb(221, 96, 96);
+            }
+          }
+        }
+      }
+    }
+  }
+  .category {
+    box-sizing: border-box;
+    padding: 0 10px;
+    .categoryList {
+      width: 100%;
+      .head {
+        font-size: 30px;
+        text-align: center;
+        padding: 30px 0;
+      }
+      .goods {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .goods-item {
+          position: relative;
+          background-color: #fff;
+          width: 360px;
+          margin-bottom: 10px;
+          img {
+            width: 80%;
+            margin-left: 30px;
+          }
+          div:nth-child(2) {
+            width: 80%;
+            margin: 0 auto;
+            font-size: 28px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          div:nth-child(3) {
+            width: 80%;
+            margin: 0 auto;
+            font-size: 26px;
+            color: rgb(233, 78, 78);
+            margin-bottom: 10px;
+          }
+        }
+        .more {
+          display: inline-block;
+          width: 360px;
+          height: 381px;
+          background-color: #fff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          div {
+            font-size: 34px;
+            position: relative;
+          }
+          .icon {
+            display: inline-block;
+            width: 65px;
+            height: 65px;
+            background: url('../../../static/images/rightbig.png') no-repeat;
+            background-size: 100%;
+            margin-top: 30px;
+          }
+        }
       }
     }
   }
