@@ -1,8 +1,9 @@
 <template>
   <div class="index">
     <tab-bar class="tabBar"></tab-bar>
-    <div class="search" @click="toSearch">
-      <div class="content">
+    <div class="search" >
+      <div class="logo"></div>
+      <div class="content" @click="toSearch">
         <div class="icon"></div>
         <input type="text" placeholder="搜索商品" disabled>
       </div>

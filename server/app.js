@@ -2,7 +2,9 @@ const Koa = require('koa')
 const app = new Koa()
 const cors = require('koa2-cors')
 const config = require('./config.js')
+const bodyParser = require('koa-bodyparser')
 // 处理跨域
+app.use(bodyParser())
 app.use(cors({
   origin: function (ctx) {
       if (ctx.url === '/test') {

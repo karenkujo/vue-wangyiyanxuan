@@ -7,6 +7,13 @@
 <script>
 export default {
   name: 'App',
+  created() {
+    const user = {
+      userId: 233,
+      username: 'shiroha',
+    }
+    localStorage.setItem("user", JSON.stringify(user))
+  },
 }
 </script>
 

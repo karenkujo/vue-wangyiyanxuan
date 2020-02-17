@@ -12,12 +12,22 @@
     height: 110px;
     overflow: hidden;
     background-color: #fff;
+    display: flex;
+    .logo {
+      display: block;
+      background: url(../../../static/images/logo1.png) no-repeat;
+      background-size: 100%;
+      width: 200px;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
     .content {
-      width: 96%;
       height: 60px;
-      margin: 0 auto;
       margin-top: 20px;
       position: relative;
+      flex: 1;
+      box-sizing: border-box;
+      padding: 0 20px;
       input {
         width: 100%;
         box-sizing: border-box;
@@ -26,13 +36,14 @@
         outline: none;
         border: none;
         background-color: #dedede;
+        font-size: 28px;
       }
       .icon {
         position: absolute;
-        top: 16px;
-        left: 20px;
-        width: 35px;
-        height: 35px;
+        top: 20px;
+        left: 40px;
+        width: 30px;
+        height: 30px;
         background: url('http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png') center no-repeat;
         background-size: 100%;
       }

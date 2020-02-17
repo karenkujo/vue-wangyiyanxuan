@@ -19,7 +19,7 @@ axios.interceptors.response.use((res) => {
 
 export function get(url, params) {
   return new Promise((resolve, reject) => {
-    axios.get(url, params)
+    axios.get(url, {params})
     .then(res => {
       resolve(res.data);
     }).catch(err => {

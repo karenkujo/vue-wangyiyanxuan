@@ -1,0 +1,51 @@
+.search {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: rgb(252, 249, 249);
+  .header {
+    width: 100%;
+  }
+  .history {
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 30px;
+    .top {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      div:nth-child(1) {
+        font-size: 30px;
+      }
+      div:nth-child(2) {
+        background: url("http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/del1-93f0a4add4.png") no-repeat;
+        background-size: 100% 100%;
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .historyList {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      .history-item {
+        font-size: 28px;
+        border: 1px solid rgb(80, 80, 80);
+        padding: 10px 20px;
+        line-height: 30px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .hotSearch {
+    margin-top: 30px;
+    .history-item:nth-child(1) {
+      border: 1px solid rgb(201, 68, 68);
+      color: rgb(201, 68, 68);
+    }
+  }
+}
