@@ -11,8 +11,8 @@
 
 <script>
   import Input from 'vant/lib/search';
-  import { Toast } from 'vant';
   import {get, post} from '@/api/index.js'
+  let userId = JSON.parse(localStorage.getItem("user")).userId
   export default {
     data() {
       return {
@@ -20,24 +20,25 @@
       }
     },
     methods: {
-      async onSearch () {
-        let userId = JSON.parse(localStorage.getItem("user")).userId
-        console.log(userId)
-        let keyWords = this.query
+      async onSearch (parentWords) {
+        let keyWords = parentWords || this.query
+        this.query = keyWords
+        if (keyWords == '') return
         const data = await post('/search/saveHistory', {
           userId: userId,
           keyWords: keyWords
         })
-        console.log(data)
         this.$parent.historyAndHotSearch()
+        this.$parent.getGoodsList(this.query)
       },
       onCancel () {
+        this.$router.go(-1)
       },
       handleInput () {
         this.$emit('sendQuery', this.query)
       },
       onFocus () {
-
+        this.$parent.inputFocus(this.query)
       }
     },
     components: {

@@ -37,6 +37,8 @@ const historyAndHotSearch = async (ctx) => {
     'user_id': userId
   }).limit(10).select()
 
+  historyList.reverse()
+
   ctx.body = {
     hotSearchList,
     historyList
@@ -61,8 +63,34 @@ const clearHistory = async (ctx) => {
   }
 }
 
+// 获取搜索建议
+const getSuggestion = async (ctx) => {
+  const keyWords = ctx.query.keyWords
+  const suggestionList = await mysql('nideshop_goods').where('name', 'like', '%' + keyWords + '%').limit(10).select()
+  if (suggestionList.length) {
+    ctx.body = {
+      suggestionList
+    }
+  } else {
+    ctx.body = {
+      suggestionList: []
+    }
+  }
+}
+
+// 获取搜索商品列表
+const getGoodsList = async (ctx) => {
+  const keyWords = ctx.query.keyWords
+  const goodsList = await mysql('nideshop_goods').where('name', 'like', '%' + keyWords + '%').select()
+  ctx.body = {
+    goodsList
+  }
+}
+
 module.exports = {
   saveHistory,
   historyAndHotSearch,
-  clearHistory
+  clearHistory,
+  getSuggestion,
+  getGoodsList
 }
