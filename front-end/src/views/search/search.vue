@@ -36,14 +36,16 @@
     </div>
     <div class="goodsList" v-if="goodsList.length">
       <div class="nav">
-        <div @click="swicthNav(0)" :class="0 === navIndex ? 'active' : ''">综合</div>
-        <div @click="swicthNav(1)" :class="1 === navIndex ? 'active' : ''">价格</div>
+        <div :class="0 === navIndex ? 'active' : ''" @click="swicthNav(0)" >综合</div>
+        <div :class="[1 === navIndex ? 'active' : '', priceSort]" @click="swicthNav(1)" >价格</div>
       </div>
-      <div class="content">
-        <div class="good-item" v-for="(item, index) in goodsList" :key="index">
-          <img :src="item.list_pic_url" alt="">
-          <div class="name">{{item.name}}</div>
-          <div class="price">¥{{item.retail_price}}</div>
+      <div class="goods-List">
+        <div class="content">
+          <div class="good-item" v-for="(item, index) in goodsList" :key="index" @click="goodsDetail(item.id)">
+            <img :src="item.list_pic_url" alt="">
+            <div class="name">{{item.name}}</div>
+            <div class="price">¥{{item.retail_price}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -63,7 +65,8 @@
         hotSearchList: [],
         suggestionList: [],
         goodsList: [],
-        navIndex: 0
+        navIndex: 0,
+        priceSort: 'desc'
       }
     },
     methods: {
@@ -80,14 +83,26 @@
         let data = await get('/search/goodsList', {
           keyWords: keyWords
         })
+        console.log(data.goodsList)
         this.goodsList = data.goodsList
         if (this.goodsList.length === 0) {
           Toast('无此类商品')
         }
       },
       // 切换商品查看方式
-      swicthNav () {
-
+      swicthNav (index) {
+        if (index === 1) {
+          this.priceSort = this.priceSort === 'asc' ? 'desc' : 'asc'
+          if (this.priceSort == 'asc') {
+            this.goodsList.sort((a, b) => a.retail_price - b.retail_price)
+          } else {
+            this.goodsList.sort((a, b) => b.retail_price - a.retail_price)
+          }
+        }
+        if (index === 0) {
+          this.goodsList.sort((a, b) => b.sort_order - a.sort_order)
+        }
+        this.navIndex = index
       },
       // 点击商品时调用子组件方法
       searchGoods (e) {
@@ -117,6 +132,15 @@
         this.goodsList = []
         this.query = query
         this.getSuggestion()
+      },
+      // 查看商品详情
+      goodsDetail (id) {
+        this.$router.push({
+          path: '/goodsDetail',
+          query: {
+            id: id
+          }
+        })
       }
     },
     watch: {

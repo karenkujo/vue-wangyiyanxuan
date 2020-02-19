@@ -1,8 +1,8 @@
 <template>
-  <swiper :options="swiperOption" ref="mySwiper">
+  <swiper :options="swiperOption" ref="mySwiper" :style="{ height: height + 'rem'}">
     <!-- slides -->
     <swiper-slide v-for="(item, index) in banner" :key="index">
-      <img :src="item.image_url" alt="">
+      <img :src="item.image_url || item.img_url" alt="">
     </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
@@ -12,7 +12,7 @@
   import 'swiper/dist/css/swiper.css'
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   export default {
-    props: ['banner'],
+    props: ['banner', 'height'],
     data() {
       return {
         swiperOption: {
@@ -30,6 +30,10 @@
         }
       }
     },
+    // mounted() {
+    //   let swiper = document.querySelector('.swiper-container')
+    //   swiper.style.height = this.height + 'px'
+    // },
     components: {
       swiper,
       swiperSlide

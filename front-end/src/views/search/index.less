@@ -78,13 +78,14 @@
     background-color: rgb(247, 247, 247);
     top: 108px;
     bottom: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
     .nav {
       width: 100%;
       display: flex;
       height: 80px;
       background-color: #fff;
+      position: absolute;
+      top: 0;
       div {
         flex: 1;
         text-align: center;
@@ -95,35 +96,51 @@
         background: url(//yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/no-3127092a69.png) 230px no-repeat;
         background-size: 15px 21px;
       }
+      .active {
+        color: rgb(216, 79, 79);
+      }
+      .active.asc {
+        background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/up-636b92c0a5.png) 230px no-repeat;
+        background-size: 15px 21px;
+      }
+      .active.desc {
+        background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/down-95e035f3e5.png) 230px no-repeat;
+        background-size: 15px 21px;
+      }
     }
-    .content {
+    .goods-List {
+      position: absolute;
+      top: 85px;
       width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      box-sizing: border-box;
-      margin-top: 4px;
-      .good-item {
-        display: inline-block;
-        width: 373px;
-        background-color: #fff;
-        margin-bottom: 4px;
-        img {
-          width: 70%;
-          margin-left: 50px;
-        }
-        div:nth-child(2) {
-          text-align: center;
-          font-size: 28px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        div:nth-child(3) {
-          text-align: center;
-          font-size: 26px;
-          padding: 16px 0;
-          color: rgb(240, 113, 113);
+      bottom: 0;
+      overflow-y: scroll;
+      .content {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .good-item {
+          display: inline-block;
+          width: 373px;
+          background-color: #fff;
+          margin-bottom: 4px;
+          img {
+            width: 70%;
+            margin-left: 50px;
+          }
+          div:nth-child(2) {
+            text-align: center;
+            font-size: 28px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+          div:nth-child(3) {
+            text-align: center;
+            font-size: 26px;
+            padding: 16px 0;
+            color: rgb(240, 113, 113);
+          }
         }
       }
     }
