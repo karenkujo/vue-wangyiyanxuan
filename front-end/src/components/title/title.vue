@@ -9,6 +9,7 @@
 
 <script>
   export default {
+    inject: ['reload'],
     methods: {
       goBack () {
         this.$router.go(-1)

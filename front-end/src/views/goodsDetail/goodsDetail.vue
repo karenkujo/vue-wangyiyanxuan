@@ -1,8 +1,8 @@
 <template>
   <div class="goodsDetail">
-    <v-title>商品详情</v-title>
+    <v-title class="router-title">商品详情</v-title>
     <!-- 商品轮播图 -->
-    <v-swiper :banner="banner" :height="10"></v-swiper>
+    <v-swiper class="swiper" :banner="banner" :height="10"></v-swiper>
     <div class="guarantee">
       <div>30天无忧退货</div>
       <div>48小时快速退款</div>
@@ -18,7 +18,7 @@
       <div class="icon"></div>
     </div>
     <!-- 选择规格数量弹出框 -->
-    <van-action-sheet v-model="showType" className="selectType" :round="false">
+    <van-action-sheet v-model="showType" className="selectType" :round="false" title="请选择规格数量">
       <div class="header">
         <div class="view">
           <img :src="info.primary_pic_url" alt="">
@@ -78,6 +78,21 @@
         </div>
       </div>
     </div>
+
+    <!-- 购物车 -->
+    <div class="cart">
+      <div class="collection" @click="collect">
+        <div class="collect" :class="collected ? 'active' : ''"></div>
+      </div>
+      <div class="cart-box" @click="toCart">
+        <div class="car">
+          <span>{{count}}</span>
+          <img src="/static/images/ic_menu_shoping_nor.png" alt="">
+        </div>
+      </div>
+      <div class="buy" @click="buy">立即购买</div>
+      <div class="addCart" @click="addCart">加入购物车</div>
+    </div>
   </div>
 </template>
 
@@ -86,6 +101,7 @@
   import Swiper from '@/components/swiper/swiper'
   import { get, post } from '@/api/index.js'
   import { ActionSheet } from 'vant';
+  import { Toast } from 'vant'
   export default {
     inject: ['reload'],
     data() {
@@ -98,7 +114,9 @@
         number: 1,
         attributeList: [],
         problemList: [],
-        goodsList: []
+        goodsList: [],
+        collected: false,
+        count: 0
       }
     },
     methods: {
@@ -114,6 +132,8 @@
         this.attributeList = data.attributeList
         this.problemList = data.problemList
         this.goodsList = data.goodsList
+        this.collected = data.collected
+        this.count = data.count
       },
       // 选择规格数量
       selectType() {
@@ -127,13 +147,58 @@
       add() {
         this.number++
       },
-      toGoodsDetail (id) {
+      toGoodsDetail(id) {
         this.$router.push({
           path: '/goodsDetail',
           query: {
             id: id
           }
         })
+        this.reload()
+      },
+      async collect() {
+        let data = await post('/goodsDetail/collection', {
+          userId: this.userId,
+          goodsId: this.goodsId
+        })
+        this.collected = data.collected
+        Toast(data.msg)
+      },
+      toCart() {
+        this.$router.push({
+          path: '/cart'
+        })
+      },
+      async buy() {
+        if (!this.showType) {
+          this.showType = true
+        } else {
+          let data = await post('/goodsDetail/addOrder', {
+            userId: this.userId,
+            goodsId: this.goodsId,
+            allPrice: this.info.retail_price * this.number
+          })
+          if (data.msg == 'success') {
+            this.$router.push({
+              path: '/order'
+            })
+          }
+        }
+      },
+      async addCart() {
+        if (!this.showType) {
+          this.showType = true
+        } else {
+          let data = await post('/goodsDetail/addCart', {
+            userId: this.userId,
+            goodsId: this.goodsId,
+            number: this.number
+          })
+          if (data.status == 200) {
+            this.count = data.count
+            Toast(data.msg)
+          }
+        }
       }
     },
     created() {

@@ -10,6 +10,9 @@ router.get('/search/getSuggestion', controller.search.getSuggestion)
 router.get('/search/goodsList', controller.search.getGoodsList)
 // 商品详情
 router.get('/goodsDetail/goodsData', controller.goodsDetail.goodsData)
+router.post('/goodsDetail/collection', controller.goodsDetail.collection)
+router.post('/goodsDetail/addOrder', controller.goodsDetail.addOrder)
+router.post('/goodsDetail/addCart', controller.goodsDetail.addCart)
 
 
 module.exports = router

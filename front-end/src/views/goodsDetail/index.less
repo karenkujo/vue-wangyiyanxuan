@@ -1,11 +1,14 @@
 .goodsDetail {
   width: 100%;
   position: absolute;
-  bottom: 100px;
+  bottom: 0;
   top: 0;
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: rgb(247, 247, 247);
+  .swiper {
+    margin-top: 100px;
+  }
   .guarantee {
     display: flex;
     align-items: center;
@@ -195,6 +198,7 @@
     }
   }
   .common-views {
+    margin-bottom: 100px;
     margin-top: 20px;
     .header {
       padding: 30px 0;
@@ -233,6 +237,92 @@
           color: #9c3232;
         } 
       }
+    }
+  }
+  .cart{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    background: #fff;
+    z-index: 3000;
+    .collection{
+      height: 100px;
+      width: 150px;
+      border: 1px solid #f5f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .collect{
+        display: block;
+        height: 50px;
+        width: 50px;
+        background: url('../../../static/images/icon_collect.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .collect.active{
+        display: block;
+        height: 50px;
+        width: 50px;
+        background: url('../../../static/images/icon_collect_checked.png') no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .cart-box{
+      height: 100px;
+      width: 150px;
+      border: 1px solid #f7f6f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .car{
+        position: relative;
+        width: 60px;
+        height: 60px;
+        span{
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 25px;
+          height: 25px;
+          z-index: 10;
+          background: #b82a2f;
+          text-align: center;
+          font-size: 16px;
+          color: #fff;
+          line-height: 25px;
+          border-radius: 50%;
+        }
+        img{
+          display: block;
+          height: 50px;
+          width: 50px;
+          position: absolute;
+          top: 10px;
+          left: 0;
+        }
+      }
+    }
+    .buy {
+      font-size: 30px;
+      height: 100px;
+      line-height: 100px;
+      flex: 1;
+      text-align: center;
+      border-top: 1px solid #f7f5f5;
+      border-bottom: 1px solid #f7f5f5;
+    }
+    .addCart {
+      font-size: 30px;
+      height: 100px;
+      line-height: 100px;
+      flex: 1;
+      text-align: center;
+      color: #fff;
+      background: #b6292d;
+      border: 1px solid #b8282d;
     }
   }
 }
