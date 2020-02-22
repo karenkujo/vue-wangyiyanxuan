@@ -180,7 +180,16 @@
           })
           if (data.msg == 'success') {
             this.$router.push({
-              path: '/order'
+              name: 'Order',
+              params: {
+                allprice: this.info.retail_price * this.number,
+                goodsList: [{
+                  number: this.number,
+                  goods_name: this.info.name,
+                  retail_price: this.info.retail_price,
+                  list_pic_url: this.info.list_pic_url
+                }]
+              }
             })
           }
         }

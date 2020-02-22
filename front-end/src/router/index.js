@@ -43,7 +43,20 @@ export default new Router({
     {
       path: '/order',
       name: 'Order',
-      component: () => import('@/views/order/order')
+      component: () => import('@/views/order/order'),
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
+    },
+    {
+      path: '/selectAddress',
+      name: 'SelectAddress',
+      component: () => import('@/views/selectAddress/selectAddress')
+    },
+    {
+      path: '/addAddress',
+      name: 'AddAddress',
+      component: () => import('@/views/addAddress/addAddress')
     }
   ]
 })

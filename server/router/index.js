@@ -13,6 +13,13 @@ router.get('/goodsDetail/goodsData', controller.goodsDetail.goodsData)
 router.post('/goodsDetail/collection', controller.goodsDetail.collection)
 router.post('/goodsDetail/addOrder', controller.goodsDetail.addOrder)
 router.post('/goodsDetail/addCart', controller.goodsDetail.addCart)
+// 订单页面
+router.get('/order/orderDetail', controller.order.orderDetail)
+// 地址
+router.get('/selectAddress/getAddressList', controller.address.getAddressList)
+router.post('/address/saveAddress', controller.address.saveAddress)
+router.get('/address/getAddress', controller.address.getAddress)
+router.get('/address/deleteAddress', controller.address.deleteAddress)
 
 
 module.exports = router
