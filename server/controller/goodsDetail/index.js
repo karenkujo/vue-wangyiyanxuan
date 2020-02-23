@@ -115,7 +115,8 @@ const addOrder = async (ctx) => {
     })
     if (update) {
       ctx.body = {
-        msg: 'success'
+        msg: 'success',
+        status: 200
       }
     } else {
       ctx.body = {
@@ -130,7 +131,8 @@ const addOrder = async (ctx) => {
     })
     if (update) {
       ctx.body = {
-        msg: 'success'
+        msg: 'success',
+        status: 200
       }
     } else {
       ctx.body = {

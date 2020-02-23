@@ -8,10 +8,13 @@ const order = require('./order/index.js')
 
 const address = require('./address/index.js')
 
+const cart = require('./cart/index.js')
+
 module.exports = {
   index,
   search,
   goodsDetail,
   order,
-  address
+  address,
+  cart
 }

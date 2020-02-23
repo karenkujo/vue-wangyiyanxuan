@@ -36,7 +36,7 @@
       </div>
       <div class="goodsList">
         <div class="content">
-          <div class="goods-item" v-for="(item, index) in newGoodsList" :key="index" >
+          <div class="goods-item" v-for="(item, index) in newGoodsList" :key="index" @click="toGoodsDetail(item.id)" >
             <img :src="item.list_pic_url" alt="">
             <div class="name">{{item.name}}</div>
             <div class="desc">{{item.goods_brief}}</div>
@@ -52,7 +52,7 @@
       </div>
       <div class="goodsList">
         <div class="content">
-          <div class="goods-item" v-for="(item, index) in hotGoodsList" :key="index" >
+          <div class="goods-item" v-for="(item, index) in hotGoodsList" :key="index" @click="toGoodsDetail(item.id)" >
             <img :src="item.list_pic_url" alt="">
             <div class="name">{{item.name}}</div>
             <div class="desc">{{item.goods_brief}}</div>
@@ -83,7 +83,7 @@
       <div class="categoryList" v-for="(item ,index) in categoryList" :key="index">
         <div class="head">{{item.name}}好物</div>
         <div class="goods">
-          <div class="goods-item" v-for="(goodsitem, goodsindex) in item.goodsList" :key="goodsindex">
+          <div class="goods-item" v-for="(goodsitem, goodsindex) in item.goodsList" :key="goodsindex" @click="toGoodsDetail(goodsitem.id)">
             <img :src="goodsitem.list_pic_url" alt="">
             <div>{{goodsitem.name}}</div>
             <div>￥{{goodsitem.retail_price}}</div>
@@ -118,8 +118,14 @@
       toSearch() {
         this.$router.push({ path: '/search' })
       },
-      toCategory () {
-
+      toCategory () {},
+      toGoodsDetail (id) {
+        this.$router.push({
+          path: '/goodsDetail',
+          query: {
+            id: id
+          }
+        })
       },
       async getData () {
         let data = await get('/index/data')

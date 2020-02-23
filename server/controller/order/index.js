@@ -10,21 +10,16 @@ const orderDetail = async (ctx) => {
   const goodsIds = order[0].goods_id.split(',')
   const goodsList = await mysql('nideshop_cart').where({
     'user_id': userId
-  }).whereIn('goods_id', goodsIds).select()
-  // let addressList;
-  // if (addressId) {
-  //   addressList = await mysql('nideshop_address').where({
-  //     'user_id': userId,
-  //     'id': addressId
-  //   }).select()
-  // } else {
-  //   addressList = await mysql('nideshop_address').where({
-  //     'user_id': userId
-  //   }).select()
-  // }
+  }).select()
+  let newGoodsList = []
+  for (let item of goodsList) {
+    if (goodsIds.findIndex( i => i == item.id) !== -1) {
+      newGoodsList.push(item)
+    }
+  }
 
   ctx.body = {
-    goodsList,
+    goodsList: newGoodsList,
     allprice
   }
 }

@@ -20,6 +20,8 @@ router.get('/selectAddress/getAddressList', controller.address.getAddressList)
 router.post('/address/saveAddress', controller.address.saveAddress)
 router.get('/address/getAddress', controller.address.getAddress)
 router.get('/address/deleteAddress', controller.address.deleteAddress)
-
+// 购物车
+router.get('/cart/getCartData', controller.cart.getCartData)
+router.post('/cart/deleteGoods', controller.cart.deleteGoods)
 
 module.exports = router
