@@ -1,7 +1,7 @@
 <template>
   <div class="order">
     <v-title>订单</v-title>
-    <div class="address" v-if="address.name" @click="toSelectAddress">
+    <div class="address" v-if="address" @click="toSelectAddress">
       <div class="address-box">
         <div class="name">
           <span>{{address.name}}</span>
@@ -60,7 +60,7 @@
     data() {
       return {
         allprice: 0,
-        address: {},
+        address: '',
         userId: '',
         addressId: '',
         goodsList: []
@@ -77,7 +77,8 @@
       },
       async getAddress () {
         const data = await get('/address/getAddress', {
-          addressId: this.addressId
+          addressId: this.addressId,
+          userId: this.userId
         })
         this.address = data.addressInfo
       },

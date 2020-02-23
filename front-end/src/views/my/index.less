@@ -5,4 +5,55 @@
   right: 0;
   bottom: 100px;
   overflow: hidden;
+  background-color: rgb(247, 247, 247);
+  .top {
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 30px;
+    background-color: #fff;
+  }
+  .user {
+    height: 300px;
+    background-color: rgb(49, 46, 46);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    .avatar {
+      width: 140px;
+      height: 140px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: 0 30px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .userName {
+      flex: 1;
+    }
+    .unLogin {
+      font-size: 24px;
+      color: rgb(201, 201, 201);
+      padding-right: 30px;
+      margin-top: 220px;
+    }
+  }
+  .userList {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    .user-item {
+      width: 250px;
+      box-sizing: border-box;
+      height: 200px;
+      border-right: 1px solid rgb(230, 230, 230);
+      border-bottom: 1px solid rgb(224, 224, 224);
+      font-size: 30px;
+      line-height: 200px;
+      text-align: center;
+    }
+  }
 }

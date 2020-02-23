@@ -14,77 +14,102 @@
     line-height: 80px;
     font-size: 30px;
   }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 60px;
-    box-sizing: border-box;
-    padding: 0 10px;
-    div {
-      background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
-      background-size: 10px;
-      font-size: 26px;
-      padding-left: 16px;
+  .body {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 60px;
+      box-sizing: border-box;
+      padding: 0 10px;
+      div {
+        background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/servicePolicyRed-518d32d74b.png) 0 center no-repeat;
+        background-size: 10px;
+        font-size: 26px;
+        padding-left: 16px;
+      }
     }
-  }
-  .cartList {
-    position: absolute;
-    width: 100%;
-    top: 140px;
-    bottom: 100px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    .content {
-      .cart-item {
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid rgb(209, 209, 209);
-        background-color: #fff;
-        height: 200px;
-        .itemInfo {
-          flex: 1;
+    .cartList {
+      position: absolute;
+      width: 100%;
+      top: 140px;
+      bottom: 100px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      .content {
+        .cart-item {
           display: flex;
           align-items: center;
-          .icon {
-            width: 34px;
-            height: 34px;
-            margin-left: 20px;
-            background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-0e09baa37e.png) no-repeat center center;
-            background-size: 34px 34px;
-          }
-          .icon.active {
-            background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-checked-822e54472a.png) no-repeat center center;
-            background-size: 34px 34px;
-          }
-          .image {
-            width: 150px;
-            height: 150px;
-            margin: 0 10px;
-            img {
-              width: 100%;
-              height: 100%;
+          border-bottom: 1px solid rgb(209, 209, 209);
+          background-color: #fff;
+          height: 200px;
+          .itemInfo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            .icon {
+              width: 34px;
+              height: 34px;
+              margin-left: 20px;
+              background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-0e09baa37e.png) no-repeat center center;
+              background-size: 34px 34px;
+            }
+            .icon.active {
+              background: url(http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/checkbox-checked-822e54472a.png) no-repeat center center;
+              background-size: 34px 34px;
+            }
+            .image {
+              width: 150px;
+              height: 150px;
+              margin: 0 10px;
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .info {
+              font-size: 30px;
+              .name {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+              }
+              .price {
+                margin-top: 8px;
+                color: rgb(207, 43, 43);
+              }
             }
           }
-          .info {
+          .number {
             font-size: 30px;
-            .name {
-              text-overflow: ellipsis;
-              overflow: hidden;
-              white-space: nowrap;
-            }
-            .price {
-              margin-top: 8px;
-              color: rgb(207, 43, 43);
-            }
+            padding: 0 30px;
           }
-        }
-        .number {
-          font-size: 30px;
-          padding: 0 30px;
         }
       }
+    }
+    .Empty {
+      position: absolute;
+      width: 100%;
+      top: 140px;
+      bottom: 100px;
+      background-color: rgb(245, 245, 245);
+      font-size: 30px;
+      text-align: center;
+      line-height: 600px;
+    }
+  }
+  .toLogin {
+    width: 100%;
+    position: absolute;
+    bottom: 200px;
+    top: 80px;
+    font-size: 32px;
+    text-align: center;
+    line-height: 600px;
+    letter-spacing: 2px;
+    span {
+      color: rgb(93, 102, 190)
     }
   }
   .footer {

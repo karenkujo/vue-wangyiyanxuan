@@ -1,6 +1,6 @@
 <template>
   <div class="goodsDetail">
-    <v-title class="router-title">商品详情</v-title>
+    <v-title goodsDeatil="true" class="router-title">商品详情</v-title>
     <!-- 商品轮播图 -->
     <v-swiper class="swiper" :banner="banner" :height="10"></v-swiper>
     <div class="guarantee">
@@ -148,7 +148,7 @@
         this.number++
       },
       toGoodsDetail(id) {
-        this.$router.push({
+        this.$router.replace({
           path: '/goodsDetail',
           query: {
             id: id
@@ -157,6 +157,12 @@
         this.reload()
       },
       async collect() {
+        if (!this.userId) {
+          this.$router.push({
+            path: '/login'
+          })
+          return
+        }
         let data = await post('/goodsDetail/collection', {
           userId: this.userId,
           goodsId: this.goodsId
@@ -170,6 +176,12 @@
         })
       },
       async buy() {
+        if (!this.userId) {
+          this.$router.push({
+            path: '/login'
+          })
+          return
+        }
         if (!this.showType) {
           this.showType = true
         } else {
@@ -195,6 +207,12 @@
         }
       },
       async addCart() {
+        if (!this.userId) {
+          this.$router.push({
+            path: '/login'
+          })
+          return
+        }
         if (!this.showType) {
           this.showType = true
         } else {
@@ -211,7 +229,9 @@
       }
     },
     created() {
-      this.userId = JSON.parse(localStorage.getItem("user")).userId
+      if (JSON.parse(localStorage.getItem("user"))) {
+        this.userId = JSON.parse(localStorage.getItem("user")).userId
+      }
       this.goodsId = this.$route.query.id
       this.getGoodsData()
     },

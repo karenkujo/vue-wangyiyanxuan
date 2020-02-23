@@ -2,28 +2,32 @@
   <div class="cart">
     <div class="top">购物车</div>
     <tab-bar class="tabBar"></tab-bar>
-    <div class="header">
-      <div>30天无忧退货</div>
-      <div>48小时快速退款</div>
-      <div>满88元免邮费</div>
-    </div>
-    <div class="cartList">
-      <div class="content">
-        <div class="cart-item" v-for="(item, index) in cartList" :key="item.id">
-          <div class="itemInfo">
-            <div class="icon" :class="{'active': selectList[index]}" @click="select(item.id, index)" ></div>
-            <div class="image">
-              <img :src="item.list_pic_url" alt="">
+    <div class="body" v-if="userId">
+      <div class="header">
+        <div>30天无忧退货</div>
+        <div>48小时快速退款</div>
+        <div>满88元免邮费</div>
+      </div>
+      <div class="cartList" v-if="cartList.length">
+        <div class="content">
+          <div class="cart-item" v-for="(item, index) in cartList" :key="item.id">
+            <div class="itemInfo">
+              <div class="icon" :class="{'active': selectList[index]}" @click="select(item.id, index)" ></div>
+              <div class="image">
+                <img :src="item.list_pic_url" alt="">
+              </div>
+              <div class="info">
+                <div class="name">{{item.goods_name}}</div>
+                <div class="price">￥{{item.retail_price}}</div>
+              </div>
             </div>
-            <div class="info">
-              <div class="name">{{item.goods_name}}</div>
-              <div class="price">￥{{item.retail_price}}</div>
-            </div>
+            <div class="number">x{{item.number}}</div>
           </div>
-          <div class="number">x{{item.number}}</div>
         </div>
       </div>
+      <div class="Empty" v-else>购物车空空如也~</div>
     </div>
+    <div class="toLogin" v-else>请先<span @click="toLogin">登录</span></div>
     <div class="footer">
       <div class="selectAll" @click="selectAll" :class="allGoodsSelect ? 'active' : ''">全选({{allNumber}})</div>
       <div class="deleteGoods" @click="deleteGoods">删除</div>
@@ -49,6 +53,12 @@
       }
     },
     methods: {
+      // 登录
+      toLogin () {
+        this.$router.push({
+          path: '/login'
+        })
+      },
       // 获取购物车列表
       async getCartData () {
         let data = await get('/cart/getCartData', {
@@ -79,6 +89,12 @@
       },
       // 删除商品
       async deleteGoods () {
+        if (!this.userId) {
+          this.$router.push({
+            path: '/login'
+          })
+          return
+        }
         if (this.allNumber == 0) {
           Toast('请选择商品')
           return
@@ -101,6 +117,12 @@
       },
       // 下单
       async toOrder () {
+        if (!this.userId) {
+          this.$router.push({
+            path: '/login'
+          })
+          return
+        }
         if (this.allNumber == 0) {
           Toast('请选择商品')
           return
@@ -151,7 +173,9 @@
       }
     },
     created() {
-      this.userId = JSON.parse(localStorage.getItem("user")).userId
+      if (JSON.parse(localStorage.getItem("user"))) {
+        this.userId = JSON.parse(localStorage.getItem("user")).userId
+      }
       this.getCartData()
     },
     components: {

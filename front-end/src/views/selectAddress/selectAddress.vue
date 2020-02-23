@@ -1,7 +1,7 @@
 <template>
   <div class="selectAddress">
     <v-title>选择收货地址</v-title>
-    <div class="addressList">
+    <div class="addressList" v-if="addressList.length">
       <div class="address-item" v-for="(item, index) in addressList" :key="index">
         <div class="name">
           <span>{{item.name}}</span>
@@ -15,6 +15,7 @@
         <div class="delete icon" @click="deleteAddress(item.id)"></div>
       </div>
     </div>
+    <div class="empty" v-else>请添加收货地址</div>
     <div class="footer" @click="addAddress">+ 新增收货地址</div>
   </div>
 </template>

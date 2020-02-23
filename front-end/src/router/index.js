@@ -33,7 +33,10 @@ export default new Router({
     {
       path: '/search',
       name: 'Search',
-      component: () => import('@/views/search/search')
+      component: () => import('@/views/search/search'),
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/goodsDetail',
@@ -57,6 +60,21 @@ export default new Router({
       path: '/addAddress',
       name: 'AddAddress',
       component: () => import('@/views/addAddress/addAddress')
+    },
+    {
+      path: '/collection',
+      name: 'Collection',
+      component: () => import('@/views/collection/collection')
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('@/views/login/login')
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: () => import('@/views/register/register')
     }
   ]
 })

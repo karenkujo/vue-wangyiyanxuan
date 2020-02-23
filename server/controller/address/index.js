@@ -1,5 +1,5 @@
 const { mysql } = require('../../mysql')
-
+ // 选择地址页面获取地址列表
 const getAddressList = async (ctx) => {
   const { userId } = ctx.query
   const addressList = await mysql('nideshop_address').where({
@@ -9,7 +9,7 @@ const getAddressList = async (ctx) => {
     addressList
   }
 }
-
+// 添加地址页面添加或修改地址
 const saveAddress = async (ctx) => {
   const { userId, addressId, userName, mobile, address, detailAddress, checked } = ctx.request.body
   // console.log(userId, addressId, userName, mobile, address, detailAddress, checked)
@@ -71,17 +71,18 @@ const saveAddress = async (ctx) => {
     }
   }
 }
-
+// 订单页面获取地址
 const getAddress = async (ctx) => {
-  const addressId = ctx.query.addressId
+  const { addressId, userId } = ctx.query
   let addressInfo = await mysql('nideshop_address').where({
-    id: addressId
+    id: addressId,
+    user_id: userId
   }).select()
   ctx.body = {
     addressInfo: addressInfo[0]
   }
 }
-
+// 选择地址页面删除地址
 const deleteAddress = async (ctx) => {
   const addressId = ctx.query.addressId
   const data = await mysql('nideshop_address').where({

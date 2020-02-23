@@ -1,0 +1,51 @@
+.collection {
+  background-color: rgb(247, 247, 247);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  .collectList {
+    position: absolute;
+    top: 104px;
+    bottom: 0;
+    overflow-y: scroll;
+    width: 100%;
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      .collect-item {
+        width: 373px;
+        height: 373px;
+        background-color: #fff;
+        margin-bottom: 4px;
+        img {
+          display: block;
+          width: 220px;
+          margin: 0 auto;
+        }
+        div {
+          text-align: center;
+          font-size: 28px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .price {
+          color: rgb(182, 38, 38);
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  .empty {
+    position: absolute;
+    top: 104px;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    line-height: 600px;
+  }
+}

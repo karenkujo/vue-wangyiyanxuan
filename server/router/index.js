@@ -23,5 +23,10 @@ router.get('/address/deleteAddress', controller.address.deleteAddress)
 // 购物车
 router.get('/cart/getCartData', controller.cart.getCartData)
 router.post('/cart/deleteGoods', controller.cart.deleteGoods)
+// 我的
+router.get('/my/getCollection', controller.my.getCollection)
+// 用户注册登录
+router.post('/user/register', controller.user.register)
+router.get('/user/login', controller.user.login)
 
 module.exports = router
