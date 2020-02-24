@@ -14,6 +14,8 @@ const my = require('./my/index.js')
 
 const user = require('./user/index.js')
 
+const category = require('./category/index.js')
+
 module.exports = {
   index,
   search,
@@ -22,5 +24,6 @@ module.exports = {
   address,
   cart,
   my,
-  user
+  user,
+  category
 }

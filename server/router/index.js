@@ -28,5 +28,8 @@ router.get('/my/getCollection', controller.my.getCollection)
 // 用户注册登录
 router.post('/user/register', controller.user.register)
 router.get('/user/login', controller.user.login)
+// 分类
+router.get('/category/getCategoryType', controller.category.getCategoryType)
+router.get('/category/getCurrent', controller.category.getCurrent)
 
 module.exports = router

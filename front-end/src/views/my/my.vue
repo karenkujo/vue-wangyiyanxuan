@@ -12,8 +12,8 @@
       </div>
       <div class="userList">
         <div class="user-item" v-for="(item, index) in userList" :key="index" @click="toDetail(index)">
-          <div class="icon"></div>
-          <div>{{item}}</div>
+          <div class="iconfont" :class="item.iconClass"></div>
+          <div class="item">{{item.name}}</div>
         </div>
       </div>
     </div>
@@ -28,14 +28,38 @@
     data() {
       return {
         userList: [
-          '我的订单',
-          '优惠券',
-          '我的足迹',
-          '我的收藏',
-          '地址管理',
-          '联系客服',
-          '帮助中心',
-          '意见反馈'
+          {
+            name: '我的订单',
+            iconClass: 'icon-aiguifanfile2'
+          },
+          {
+            name: '优惠券',
+            iconClass: 'icon-youhuiquan'
+          },
+          {
+            name: '我的足迹',
+            iconClass: 'icon-wodezuji'
+          },
+          {
+            name: '我的收藏',
+            iconClass: 'icon-shoucang'
+          },
+          {
+            name: '地址管理',
+            iconClass: 'icon-dizhiguanli'
+          },
+          {
+            name: '联系客服',
+            iconClass: 'icon-lianxikefu'
+          },
+          {
+            name: '帮助中心',
+            iconClass: 'icon-bangzhuzhongxin'
+          },
+          {
+            name: '意见反馈',
+            iconClass: 'icon-yijianfankui'
+          }
         ],
         userId: '',
         userName: ''

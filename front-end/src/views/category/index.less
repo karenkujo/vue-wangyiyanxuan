@@ -5,4 +5,105 @@
   right: 0;
   bottom: 100px;
   overflow: hidden;
+  .top {
+    font-size: 30px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+  }
+  .search {
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    border-bottom: 1px solid rgb(235, 235, 235);
+    .con {
+      height: 60px;
+      position: relative;
+      flex: 1;
+      box-sizing: border-box;
+      padding: 0 30px;
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 70px;
+        height: 60px;
+        outline: none;
+        border: none;
+        background-color: #f0eded;
+        font-size: 28px;
+      }
+      .icon {
+        position: absolute;
+        top: 20px;
+        left: 40px;
+        width: 30px;
+        height: 30px;
+        background: url('http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png') center no-repeat;
+        background-size: 100%;
+      }
+    }
+  }
+  .content {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top: 160px;
+    display: flex;
+    .side-left {
+      flex: 0 0 200px;
+      height: 100%;
+      overflow-y: scroll;
+      .category-type {
+        width: 100%;
+        .catrgory-item {
+          font-size: 32px;
+          text-align: center;
+          padding: 30px 0;
+        }
+        .catrgory-item.active {
+          box-sizing: border-box;
+          border-left: 5px solid rgb(185, 49, 49);
+          color: rgb(185, 49, 49);
+        }
+      }
+    }
+    .side-right {
+      flex: 1;
+      height: 100%;
+      overflow-y: scroll;
+      .category-content {
+        width: 100%;
+        .banner {
+          width: 90%;
+          margin: 30px auto 0;
+          img {
+            width: 100%;
+            height: 230px;
+          }
+        }
+        .title {
+          font-size: 30px;
+          text-align: center;
+          padding: 40px 0;
+        }
+        .goodsList {
+          display: flex;
+          flex-wrap: wrap;
+          .goods-item {
+            font-size: 30px;
+            width: 183px;
+            text-align: center;
+            margin-bottom: 20px;
+            img {
+              display: block;
+              margin: 0 auto;
+              width: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
