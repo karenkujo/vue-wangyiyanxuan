@@ -31,5 +31,8 @@ router.get('/user/login', controller.user.login)
 // 分类
 router.get('/category/getCategoryType', controller.category.getCategoryType)
 router.get('/category/getCurrent', controller.category.getCurrent)
+// 分类列表
+router.get('/category/getCategoryNav', controller.category.getCategoryNav)
+router.get('/category/getActiveList', controller.category.getActiveList)
 
 module.exports = router

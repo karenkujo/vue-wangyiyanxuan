@@ -75,6 +75,11 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: () => import('@/views/register/register')
+    },
+    {
+      path: '/categoryList',
+      name: 'CategoryList',
+      component: () => import('@/views/categoryList/categoryList')
     }
   ]
 })

@@ -1,7 +1,6 @@
 <template>
   <van-search 
-  v-model="query" 
-  show-action 
+  v-model="query"
   placeholder="请输入商品关键词" 
   @search="onSearch" 
   @cancel="onCancel"

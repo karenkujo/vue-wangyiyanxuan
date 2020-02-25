@@ -31,7 +31,7 @@
             <span>——</span>
           </div>
           <div class="goodsList">
-            <div class="goods-item" v-for="(item, index) in currentData.currentList" :key="index">
+            <div class="goods-item" v-for="(item, index) in currentData.currentList" :key="index" @click="toCategoryList(item.id)">
               <img :src="item.wap_banner_url" alt="">
               <div class="name">{{item.name}}</div>
             </div>
@@ -67,6 +67,7 @@
         console.log(data)
         this.categoryType = data.categoryType
       },
+      // 点击左侧菜单
       async selectItem (id, index) {
         this.activeIndex = index
         const data = await get('/category/getCurrent', {
@@ -74,6 +75,15 @@
         })
         console.log(data)
         this.currentData = data.currentData.current
+      },
+      // 点击右侧分类
+      toCategoryList (id) {
+        this.$router.push({
+          path: '/categoryList',
+          query: {
+            id: id
+          }
+        })
       }
     },
     created() {

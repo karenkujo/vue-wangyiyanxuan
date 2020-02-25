@@ -1,0 +1,103 @@
+
+.categoryList {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+  overflow: hidden;
+  .nav {
+    margin-top: 100px;
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .navList {
+      height: 80px;
+      display: inline-block;
+      white-space: nowrap;
+      .nav-item {
+        display: inline-block;
+        text-align: center;
+        font-size: 30px;
+        height: 80px;
+        width: 150px;
+        line-height: 80px;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+      .nav-item.active {
+        border-bottom: 5px solid rgb(212, 84, 84);
+        color: rgb(212, 84, 84);
+      }
+    }
+  }
+  .header {
+    height: 160px;
+    background-color: #fff;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    .title {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 40px;
+    }
+    .brief {
+      text-align: center;
+      font-size: 24px;
+      color: rgb(145, 145, 145);
+      margin-top: 16px;
+    }
+  }
+  .goodsList {
+    position: absolute;
+    width: 100%;
+    top: 366px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .content {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .goods-item {
+        width: 373px;
+        background-color: #fff;
+        margin-bottom: 4px;
+        text-align: center;
+        img {
+          width: 70%;
+        }
+        .name {
+          font-size: 30px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .price {
+          font-size: 30px;
+          color: rgb(177, 49, 49);
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+  .noGoods {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    color: rgb(83, 83, 83);
+    text-align: center;
+    line-height: 500px;
+    background-color: #fff;
+  }
+}

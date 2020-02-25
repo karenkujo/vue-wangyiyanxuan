@@ -1,5 +1,6 @@
 <template>
   <div class="search">
+    <v-title>搜索</v-title>
     <div class="header">
       <v-input @sendQuery="getQuery" ref="input"></v-input>
     </div>
@@ -56,6 +57,7 @@
   import Input from '@/components/input/input.vue'
   import {get, post} from '@/api/index.js'
   import { Toast } from 'vant';
+  import Title from '@/components/title/title'
   let userId = JSON.parse(localStorage.getItem("user")).userId
   export default {
     data () {
@@ -153,7 +155,8 @@
       this.historyAndHotSearch()
     },
     components: {
-      'v-input': Input
+      'v-input': Input,
+      "v-title": Title
     }
   }
 </script>

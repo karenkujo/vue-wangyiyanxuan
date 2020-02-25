@@ -12,7 +12,7 @@
       <swiper :banner="banner"></swiper>
     </div>
     <div class="channel">
-      <div class="channel-item" v-for="(item, index) in channelList" :key="index" @click="toCategory">
+      <div class="channel-item" v-for="(item, index) in channelList" :key="index" @click="toCategory(item.id)">
         <img :src="item.icon_url" alt="">
         <div>{{item.name}}</div>
       </div>
@@ -118,7 +118,14 @@
       toSearch() {
         this.$router.push({ path: '/search' })
       },
-      toCategory () {},
+      toCategory (id) {
+        this.$router.push({
+          name: 'CategoryList',
+          query: {
+            id: id
+          }
+        })
+      },
       toGoodsDetail (id) {
         this.$router.push({
           path: '/goodsDetail',
