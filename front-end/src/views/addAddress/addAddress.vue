@@ -81,7 +81,8 @@
       },
       async getAddress () {
         const data = await get('/address/getAddress', {
-          addressId: this.addressId
+          addressId: this.addressId,
+          userId: this.userId
         })
         console.log(data)
         this.userName = data.addressInfo.name
