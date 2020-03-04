@@ -4,9 +4,10 @@
     <div class="header">
       <v-input @sendQuery="getQuery" ref="input"></v-input>
     </div>
-    <div class="suggestion" v-if="query" >
+    <div class="suggestion" v-if="query">
       <div class="suggestionList" v-if="suggestionList.length">
-        <div class="suggestion-item" v-for="(item, index) in suggestionList" :key="index" @click="searchGoods" :data-keywords="item.name">
+        <div class="suggestion-item" v-for="(item, index) in suggestionList" :key="index" @click="searchGoods"
+          :data-keywords="item.name">
           {{item.name}}
         </div>
       </div>
@@ -20,7 +21,8 @@
         <div @click="clearHistory"></div>
       </div>
       <div class="historyList">
-        <div class="history-item" v-for="(item, index) in historyList" :key="index" @click="searchGoods" :data-keywords="item.keyword">
+        <div class="history-item" v-for="(item, index) in historyList" :key="index" @click="searchGoods"
+          :data-keywords="item.keyword">
           {{item.keyword}}
         </div>
       </div>
@@ -30,15 +32,16 @@
         <div>热门搜索</div>
       </div>
       <div class="historyList">
-        <div class="history-item" v-for="(item, index) in hotSearchList" :key="index" @click="searchGoods" :data-keywords="item.keyword">
+        <div class="history-item" v-for="(item, index) in hotSearchList" :key="index" @click="searchGoods"
+          :data-keywords="item.keyword">
           {{item.keyword}}
         </div>
       </div>
     </div>
     <div class="goodsList" v-if="goodsList.length">
       <div class="nav">
-        <div :class="0 === navIndex ? 'active' : ''" @click="swicthNav(0)" >综合</div>
-        <div :class="[1 === navIndex ? 'active' : '', priceSort]" @click="swicthNav(1)" >价格</div>
+        <div :class="0 === navIndex ? 'active' : ''" @click="swicthNav(0)">综合</div>
+        <div :class="[1 === navIndex ? 'active' : '', priceSort]" @click="swicthNav(1)">价格</div>
       </div>
       <div class="goods-List">
         <div class="content">
@@ -55,12 +58,11 @@
 
 <script>
   import Input from '@/components/input/input.vue'
-  import {get, post} from '@/api/index.js'
+  import { get, post } from '@/api/index.js'
   import { Toast } from 'vant';
   import Title from '@/components/title/title'
-  let userId = JSON.parse(localStorage.getItem("user")).userId
   export default {
-    data () {
+    data() {
       return {
         query: '',
         historyList: [],
@@ -68,19 +70,20 @@
         suggestionList: [],
         goodsList: [],
         navIndex: 0,
-        priceSort: 'desc'
+        priceSort: 'desc',
+        userId: ''
       }
     },
     methods: {
       // 搜索建议
-      async getSuggestion () {
+      async getSuggestion() {
         let data = await get('/search/getSuggestion', {
           keyWords: this.query
         })
         this.suggestionList = data.suggestionList
       },
       // 获取搜索商品
-      async getGoodsList (keyWords) {
+      async getGoodsList(keyWords) {
         console.log(keyWords)
         let data = await get('/search/goodsList', {
           keyWords: keyWords
@@ -92,7 +95,7 @@
         }
       },
       // 切换商品查看方式
-      swicthNav (index) {
+      swicthNav(index) {
         if (index === 1) {
           this.priceSort = this.priceSort === 'asc' ? 'desc' : 'asc'
           if (this.priceSort == 'asc') {
@@ -107,36 +110,36 @@
         this.navIndex = index
       },
       // 点击商品时调用子组件方法
-      searchGoods (e) {
+      searchGoods(e) {
         this.$refs.input.onSearch(e.target.dataset.keywords)
       },
       // 清空搜索历史
-      async clearHistory () {
+      async clearHistory() {
         const data = await post('/search/clearHistory', {
-          userId: userId
+          userId: this.userId || ''
         })
         this.historyAndHotSearch()
       },
       // 子组件input框值发生变化时同步query
-      getQuery (query) {
+      getQuery(query) {
         this.query = query
       },
       // 获取历史搜索和热门搜索
-      async historyAndHotSearch () {
+      async historyAndHotSearch() {
         let data = await get('/search/historyAndHotSearch', {
-          userId: userId
+          userId: this.userId || ''
         })
         this.hotSearchList = data.hotSearchList
         this.historyList = data.historyList
       },
       // 聚焦时展示搜索建议
-      inputFocus (query) {
+      inputFocus(query) {
         this.goodsList = []
         this.query = query
         this.getSuggestion()
       },
       // 查看商品详情
-      goodsDetail (id) {
+      goodsDetail(id) {
         this.$router.push({
           path: '/goodsDetail',
           query: {
@@ -147,11 +150,14 @@
     },
     watch: {
       // input值变化时获取搜索建议
-      query (val) {
+      query(val) {
         this.getSuggestion()
       }
     },
     created() {
+      if (JSON.parse(localStorage.getItem("user"))) {
+        this.userId = JSON.parse(localStorage.getItem("user")).userId
+      }
       this.historyAndHotSearch()
     },
     components: {
@@ -162,5 +168,5 @@
 </script>
 
 <style lang="less" scoped>
-@import './index';
+  @import './index';
 </style>

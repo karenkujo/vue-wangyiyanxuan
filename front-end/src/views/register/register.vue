@@ -10,7 +10,7 @@
         :rules="[{ required: true, message: '请填写手机号' }]" />
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">
-          提交
+          注册
         </van-button>
       </div>
     </van-form>

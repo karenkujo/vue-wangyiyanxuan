@@ -104,6 +104,15 @@
         }
       }
     },
+    beforeRouteEnter (to, from, next) {
+      console.log(from)
+      if (from.path == '/login') {
+        location.reload()
+        next()
+      } else {
+        next()
+      }
+    },
     created() {
       if (JSON.parse(localStorage.getItem("user"))) {
         this.userId = JSON.parse(localStorage.getItem("user")).userId

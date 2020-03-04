@@ -11,11 +11,11 @@
 <script>
   import Input from 'vant/lib/search';
   import {get, post} from '@/api/index.js'
-  let userId = JSON.parse(localStorage.getItem("user")).userId
   export default {
     data() {
       return {
-        query: ''
+        query: '',
+        userId: ''
       }
     },
     methods: {
@@ -24,7 +24,7 @@
         this.query = keyWords
         if (keyWords == '') return
         const data = await post('/search/saveHistory', {
-          userId: userId,
+          userId: this.userId || '',
           keyWords: keyWords
         })
         this.$parent.historyAndHotSearch()
@@ -38,6 +38,11 @@
       },
       onFocus () {
         this.$parent.inputFocus(this.query)
+      }
+    },
+    created() {
+      if (JSON.parse(localStorage.getItem("user"))) {
+        this.userId = JSON.parse(localStorage.getItem("user")).userId
       }
     },
     components: {
