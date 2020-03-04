@@ -106,7 +106,7 @@
     },
     beforeRouteEnter (to, from, next) {
       console.log(from)
-      if (from.path == '/login') {
+      if (from.path == '/login' && JSON.parse(localStorage.getItem("user"))) {
         location.reload()
         next()
       } else {
